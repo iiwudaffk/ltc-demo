@@ -1,0 +1,309 @@
+
+// library for this app
+// sessionStorage key = JOB{CID}
+
+var cm_service = 'http://alphacase.azurewebsites.net/ServiceControl/CMJsonService.svc/';
+var hp_service = 'http://jektest.azurewebsites.net/ServiceControl/GetServiceControl.svc/';
+
+var beta_service = "http://newtestnew.azurewebsites.net/ServiceControl/";
+
+var currentPath = '../../pages/forms/Search.aspx';
+var currentDir = '../../pages/';
+var contentPath = '../../pages/content/';
+var noImg = '../../img/UnPicUser.png';
+
+
+function doLogin(){   
+
+    sessionStorage.setItem("STAFF_ID", "20150201"); //****
+    sessionStorage.setItem("HOST_ID", "HT1020001"); //****
+
+
+
+    $('#staffNameLabel').text('aaaa'); 
+
+    // load dashboard on login    
+}
+
+function startAjaxLoader () {
+    /*
+    if ($('#ajaxLoadScreen') != null) {
+        var loader = '<div id="ajaxLoadScreen"><img id="loadingImg" src="/img/ajax-loader-bar.gif"></div>';
+        $(loader).appendTo('body');
+    } 
+    */
+}
+
+function stopAjaxLoader () {    
+    $('#ajaxLoadScreen').remove();
+    console.log("ajax stopped");
+    
+}
+
+function buildJSONAnswer(data) {
+    //0100 insert Mode
+    //0101 edit Mode       
+    var array
+     = [];
+    var a = data;
+    $.each(a, function(index, value){
+        array.push(this["full-answer"]);
+        // console.log(this["full-answer"]);
+    });    
+    return array;
+}
+
+
+function setSidebarProfile(CID, name, img) {
+    $('.pull-left.image .img-circle').attr('src', img);
+    $('.pull-left.image .img-circle').attr('onerror', "imgError(this);");
+    var nameSp = name.split(' ');
+
+    if (nameSp[1].length > (17 - nameSp[0].length)) {
+        $('.pull-left.info p').html(nameSp[0] + '<p style="margin:2px 0 -8px 0;font-size:smaller">' + nameSp[1] + '</p>');
+    }
+    else {
+        $('.pull-left.info p').text(nameSp[0] + ' ' + nameSp[1]);
+
+    }
+    $('.pull-left.info p').attr('onclick', 'showModalDetails()'); //   <------------------------
+    $('.pull-left.info p').css('cursor','pointer');
+    $('.pull-left.info a').text(CID);
+    $('.pull-left.info a').text(CID);
+    $('.pull-left.info a').prepend('<i class="fa fa-circle text-default"></i>');
+    $('.user-panel .pull-left.info a').attr('title', 'ยังไม่ได้ประเมิน หรือวางแผน'); //    <-----------------------
+}
+
+function addSideBarMenu(text, notify, linkPage, isActive, iconOPTION, badgeColor) {
+    var icon = 'fa fa-edit';
+    if (iconOPTION) {
+        icon = iconOPTION;
+    }
+    var $bar = $('.sidebar-menu');
+    var $li = $("<li>", { class: 'active' });
+    if (!isActive) {
+        $li = $("<li>");
+    }
+    var $a = $("<a>", { href: '#', onclick: linkPage });
+    $li.append($a.append('<i class="' + icon + '"></i> <span>' + text + '</span>')
+            .append('<small class="badge pull-right bg-'+badgeColor+'">' + notify + '</small>'));
+    $bar.append($li);
+}
+
+function clearSideBarMenu() {
+    $('.sidebar-menu').empty(); //      <----- obsoleted
+}
+
+function showModalDetails(){
+    $('#modalDetails').modal('show');
+    console.log('show');
+}
+
+function addJob(textDescription, isDone, dateTime) {
+    var $list = $('.todo-list');
+    var $li = $('<li>', { 'class': 'success done' });
+    var $checkBox ='<div class="icheckbox_minimal" aria-checked="false" aria-disabled="false">'+
+                   '<div class="icheckbox_minimal checked" aria-checked="false" aria-disabled="false" style="position: relative;"><input type="checkbox" checked="checked" value="" name="" class="job-done" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>'
+                   '</div>';
+    var $span = $('<span>', { 'class': 'text' }).text(textDescription);
+    $li.append($checkBox).append($span);
+    if (!isDone) {
+        $li = $('<li>', { 'class': 'danger' });
+        $checkBox = $('<div>', {
+            "class": 'icheckbox_minimal',
+            "aria-checked": "false",
+            "aria-disabled": "false",
+            "style": "position: relative;"
+        }).append($('<ins>', {
+            "class": 'iCheck-helper job-done'
+        }));
+        $li.append($checkBox).append($span);
+        $li.append('<small class="label label-info">' + dateTime + '</small>');
+        $li.append($('<div>', {
+            "class": 'tools-visible'
+        }).append('<small class="label label-primary job-link" onclick="redirectToADL();">ดำเนินการ</small>'));
+    }
+    $list.append($li);
+}
+
+function setCurrentTask (currTask) {
+    sessionStorage.removeItem("CURRENTTASK");
+    sessionStorage.setItem("CURRENTTASK", currTask);
+}
+
+function clearContent() {
+    // $('.row').empty();
+    $('#content').empty();
+}
+
+function clearJobs() {
+    $('.todo-list').empty();
+}
+
+function redirectToADL() {
+    location.href = currentDir + 'ADL.aspx';
+}
+
+function setMainHeaderText(headerText) {
+    $('.content-header h1').text(headerText);
+}
+
+function bindDefaultMenu() {
+    // addSideBarMenu(text, notify, linkPage, isActive, iconOPTION)
+    clearSideBarMenu();
+    addSideBarMenu("หน้าหลัก", '', 'dashboard()', false, 'fa fa-home', 'red');
+    addSideBarMenu("คัดกรอง",'' ,'onSidebarMenu_click("screening")', false, 'fa fa-building-o', 'green');
+    addSideBarMenu("ประเมิน",'' ,'onSidebarMenu_click("assessment")', false);
+    addSideBarMenu("ประเมินความต้องการ",'' ,'onSidebarMenu_click("need")', false);
+    addSideBarMenu("แผนการดูแล",'' ,'onSidebarMenu_click("care")', false);
+    addSideBarMenu("สรุป",'' ,'load_person_timeline()', false,'fa fa-th', 'yellow');
+    
+}
+
+function changePersonTypeColor(id, popupText) {
+    var colorClass = 'fa fa-circle text-default';
+    if (id == '00001') {
+        colorClass = 'fa fa-circle text-social';
+    }
+    else if (id == '00002') {
+        colorClass = 'fa fa-circle text-home';
+    }
+    else if (id == '00003') {
+        colorClass = 'fa fa-circle text-bed';
+    }
+    $('.user-panel .pull-left.info a i').attr('class', colorClass);
+    $('.user-panel .pull-left.info a').attr('title', popupText);
+}
+
+function updateJobNumber(text, value) {
+    var color = 'badge pull-right bg-red';
+    $(".sidebar-menu li").each(function (index) {
+        if ($(this).find('a span').text() == text) {
+            if (value > 0) {
+                $(this).find('a small').attr('class', color).text(value);
+            }
+            else {
+                $(this).find('a small').text('');
+            }
+            return;
+        }
+    });
+}
+
+function getDateFromDatePicker (idString) {
+    var d = $('#' + idString).datepicker("getDate");
+    return ((d.getMonth() + 1).toString() + "/" + d.getDate().toString() +"/"+ d.getFullYear().toString());
+}
+
+function getCurrentCID() {
+    var person = sessionStorage.getItem("CURRENTPERSON");
+    if (person != null) {
+        var data = JSON.parse(person);
+        return data['CID'].trim();
+    }
+    return null;
+}
+
+function getCurrentStaffID () {
+    var staff = sessionStorage.getItem("STAFF_ID");
+    if (staff != null) {
+        return staff.trim();
+    }
+    return null;
+}
+
+function getCurrentHostID () {
+    var host = sessionStorage.getItem("HOST_ID");
+    if (host != null) {
+        return host.trim();
+    }
+    return null;
+}
+
+
+
+function getCurrentName() {
+    var person = sessionStorage.getItem("CURRENTPERSON");
+    if (person != null) {
+        var data = JSON.parse(person);
+        return data['name'];
+    }
+    return null;
+}
+
+function getResultHtmlClass(str) {
+    if (str.indexOf('25%') != -1) {
+        return '<div title="' + str + '" class="progress-bar progress-bar-danger" style="width: 10%"></div>';
+    }
+    else if (str.indexOf('49%') != -1) {
+        return '<div title="' + str + '" class="progress-bar progress-bar-danger" style="width: 25%"></div>';
+    }
+    else if (str.indexOf('74%') != -1) {
+        return '<div title="' + str + '" class="progress-bar progress-bar-yellow" style="width: 50%"></div>';
+    }
+    else if (str.indexOf('75%') != -1) {
+        return '<div title="' + str + '" class="progress-bar progress-bar-success" style="width: 75%"></div>';
+    }
+    else {
+        return '<div title="' + str + '" class="progress-bar progress-bar-primary" style="width: 95%"></div>';
+    }
+}
+
+function getResultLevelHtmlClass(str) {
+    if (str.indexOf('25%') != -1) {
+        return '<span title="' + str + '" class="badge bg-red">&lt; 25%</span>';
+    }
+    else if (str.indexOf('49%') != -1) {
+        return '<span title="' + str + '" class="badge bg-red">25-49%</span>';
+    }
+    else if (str.indexOf('74%') != -1) {
+        return '<span title="' + str + '" class="badge bg-yellow">50-74%</span>';
+    }
+    else if (str.indexOf('75%') != -1) {
+        return '<span title="' + str + '" class="badge bg-green">75%</span>';
+    }
+    else {
+        return '<span title="' + str + '" class="badge bg-light-blue">95%</span>';
+    }
+}
+
+function loadContentPage(div, file, callBack) {
+    $(div).load(file, callBack);
+}
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = '../img/avatar-placeholder.png';
+    return true;
+}
+
+function clearAllSession () {
+    sessionStorage.clear();
+}
+
+function getMaxCMPlanNo () {
+    return sessionStorage.getItem('MAX_CMPLAN_NO');
+}
+
+function getMaxCMPlanNo_ajax(){    
+    
+}
+
+function getQTSID_ajax () {
+    $.ajax({
+        url: config_serviceEndPoint + 'GetMaxCMPlanNo?CID='+ getCurrentCID() + '&src=00',
+        dataType: 'jsonp',
+        success: function(msg){
+            var r = JSON.parse(msg);
+            setMaxQTSID(r.Val);              
+        },
+        beforeSend : startAjaxLoader,
+        error :  function (request, status, error) {
+            onAjaxError(request, status, error, noteWhenError);
+        }
+    });s
+}
+
+function setMaxQTSID (qtsid) {
+    sessionStorage.setItem('MAX_QTSID', qtsid);
+}

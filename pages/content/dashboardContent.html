@@ -1,0 +1,86 @@
+<div class="col-md-12" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">ส่งออกรายงาน</div>
+        <div class="box-body no-padding">         
+            <table class="table">
+                <tbody id="report-table">
+                    <tr>
+                        <td id="geriatric-report">รายงาน Geriatric Syndromes
+                             <select class="form-control" style="width:auto; display:inline; height:auto;">
+                                <option value="2558">ปี 2558</option>
+                                <option value="2557">ปี 2557</option>
+                            </select>
+                            <a href="/img/Report-Geriatric.pdf" target="_blank" class="btn btn-primary pull-right" style="padding-top:0; padding-bottom:0;">สร้างรายงาน</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="opt-report">รายงานสรุปกิจกรรมผู้สูงอายุ สำหรับ อปท.
+                            <select class="form-control range-type" style="width:auto; display:inline; height:auto;" >
+                                <option value="00001">ปี</option>
+                                <option value="00002">ไตรมาส</option>
+                                <option value="00003">เดือน</option>
+                            </select> 
+                            <select class="form-control year" style="width:auto; display:inline; height:auto;">
+                                <option value="2558">ปี 2558</option>
+                                <option value="2557">ปี 2557</option>
+                            </select> 
+                            <select class="form-control quarter" style="width:auto; display:inline; height:auto;">
+                                <option value="00001">ไตรมาสที่ 1</option>
+                                <option value="00002">ไตรมาสที่ 2</option>
+                                <option value="00003">ไตรมาสที่ 3</option>
+                                <option value="00004">ไตรมาสที่ 4</option>
+                            </select> 
+                            <select class="form-control month" style="width:auto; display:inline; height:auto;">
+                                <option value="00001">มกราคม</option>
+                                <option value="00002">กุมภาพันธ์</option>
+                                <option value="00003">มีนาคม</option>
+                                <option value="00004">เมษายน</option>
+                                <option value="00005">พฤษภาคม</option>
+                                <option value="00006">มิถุนายน</option>
+                                <option value="00007">กรกฎาคม</option>
+                                <option value="00008">สิงหาคม</option>
+                                <option value="00009">กันยายน</option>
+                                <option value="00010">ตุลาคม</option>
+                                <option value="00011">พฤศจิกายน</option>
+                                <option value="00012">ธันวาคม</option>
+                            </select> 
+                            <!-- <a onclick="createOPTReport();" class="btn btn-primary pull-right" style="padding-top:0; padding-bottom:0;">สร้างรายงาน</a> -->
+							<a href="/img/ReportOPT.pdf" target="_blank" class="btn btn-primary pull-right" style="padding-top:0; padding-bottom:0;">สร้างรายงาน</a>
+                        </td>
+                    </tr>
+                </tbody>    
+             </table>                      
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;"> ผู้สูงอายุทั้งหมดตามช่วงอายุ          
+        </div>
+        <div class="box-body" >         
+            <canvas id="dashboard_bar" style="width:100%; height:400px"></canvas>
+            <div>
+                <i class="fa fa-circle text-blue"></i> <span>ชาย</span>
+                <i class="fa fa-circle text-yellow"></i> <span>หญิง</span>
+            </div>             
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;"> ข้อมูลการดำเนินการของหน่วยงาน</div>
+        <div class="box-body no-padding">         
+            <table class="table">
+                <tbody id="summary-table">
+                   <tr>
+                    <th>บริการ</th>
+                    <th style="width:120px">ดำเนินการแล้ว</th>
+                    <th style="width:140px">ยังไม่ได้ดำเนินการ</th>
+                   </tr>
+                </tbody>    
+             </table>                      
+        </div>
+    </div>
+</div>

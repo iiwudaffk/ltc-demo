@@ -1,0 +1,104 @@
+﻿<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+
+
+    <script src="../../js/plugins/handsontable/handsontable.full.js"></script>
+    <link href="../../js/plugins/handsontable/handsontable.full.css" rel="stylesheet" />
+    <script src="../../js/plugins/handsontable/moment.js"></script>
+    <script src="../../js/plugins/handsontable/pikaday/pikaday.js"></script>
+    <link href="../../js/plugins/handsontable/pikaday/css/pikaday.css" rel="stylesheet" />
+	<script src="../../js/importscreeningContent.js"></script>
+<style>
+     .box > .saving-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box > .saving-img {
+        z-index: 1020;
+        background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+    }
+</style>
+
+<div class="row">
+    <!-- right column -->
+    <div class="col-md-12">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+
+
+
+            <!-- /.box-header -->
+            <div class="box-body" style="overflow-x:scroll;">
+                <center>
+									            <div class='center-block' style="width: 250px;">
+                <div class='input-group'>
+                    <input id="recdate-input" type='text' class="form-control" placeholder="วันที่ดำเนินการ" />
+                    <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+                    <table  style="width:97%;">
+					<tr>
+					<td>
+						<table>
+						<tr>
+						<td style="width:300px">แสดงเฉพาะผู้สูงอายุในหมู่บ้าน : 
+					<select id="VillageList"></select>
+					</td>
+					<td ><button type="button" onclick="getVillagePerson()" >ตกลง</button>&nbsp&nbsp&nbsp&nbsp</td>
+					<td ><button id="ButtonLast" type="button" onclick="getVillagePersonMaxDate()" >แสดงข้อมูลการบันทึกครั้งสุดท้ายวันที่ :</button> &nbsp&nbsp&nbsp&nbsp	</td>
+					<td id="lblAllperson">จำนวนผู้สูงอายุทั้งหมด</td>
+						</tr>
+						</table>
+
+					</td>
+
+					</tr>
+				<tr>
+					<td><br></td>
+					</tr>
+                    <tr style="height: 375px; width:100%; vertical-align:top; overflow:scroll;">
+                        <td><div id="dataTable" style="height:100%; width:100%;text-align:center;"></div></td>
+                    </tr>
+
+                </table>
+                </center>
+            </div>
+			
+			
+
+            <!-- result -->
+            <div class="box-body no-padding" style="display: none">
+                <table class="table table-condensed">
+                    <tr>
+                        <th style="width: 10px">ข้อ</th>
+                        <th>ด้าน</th>
+                        <th style="width: 40%">ระดับการช่วยเหลือตนเอง</th>
+                        <th style="width: 50px">ระดับ</th>
+                    </tr>
+                </table>
+            </div>
+            <!-- /result -->
+
+            <div id="panel-button" class='center-block' style="width: 150px; padding: 8px 0;text-align: center;">    
+				<div id="pageIndexNow"></div>
+				<a id="button-assessment-prev" href="#" onclick="button_assessment_prev_click();" class="btn btn-default" style="width: 150px; display: none;"><span class="glyphicon glyphicon-arrow-left"></span>ย้อนกลับ</a>
+                <a id="button-assessment-next" href="#" onclick="button_assessment_next_click();" class="btn btn-default" style="width: 150px; display: none;">ถัดไป  <span class="glyphicon glyphicon-arrow-right"></span></a>			
+                <a id="button-assessment-save" onclick="saveScreeningResult()" class="btn btn-primary" style="width: 150px;">บันทึก</a>
+            </div>
+
+            <div class="overlay" style="text-align: center; padding-top: 70px; font-size: medium; display: none"></div>
+            <div class="saving-img" style="display: none"></div>
+
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+</div>

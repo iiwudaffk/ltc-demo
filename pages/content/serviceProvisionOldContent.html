@@ -1,0 +1,78 @@
+﻿<style>
+    .timeline-footer {
+        margin-top: -30px;
+    }
+
+    .timeline-body {
+        min-height: 30px;
+    }
+
+        .timeline-footer-n {
+        margin-top: -30px;
+    }
+
+    .timeline-body-n {
+        min-height: 30px;
+    }
+
+    .overlay {
+        position: absolute;
+        font-size: larger;
+        top: 45%;
+        left: 0;
+        z-index: 1100;
+        text-align: center;
+        width: 100%;
+    }
+
+    .saving-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        z-index: 1020;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+    }
+
+    .load-more {
+        text-align: center;
+        font-size: smaller;
+    }
+
+        .load-more .saving-img {
+            margin-top: -50px;
+        }
+
+    .loading-item-body {
+        height: 30px;
+        display: none;
+    }
+
+
+</style>
+<!-- row -->
+<div class="row" style="overflow-y:hidden;">
+    <div class="col-md-12" style="padding-left: 20px;">
+        <!-- The time line -->
+        <ul class="timeline">
+
+            <li>
+                <div class="timeline-item" style="text-align: center;">
+                    <div class="timeline-body">
+                        <a href="#" onclick="redirectToServiceProvision();" class="btn btn-primary">บันทึกการให้บริการใหม่</a>
+                    </div>
+                </div>
+            </li>
+
+            <li id="end-item">
+                <i class="fa fa-clock-o"></i>
+            </li>
+      
+        </ul>
+    </div>
+    <!-- /.col -->
+</div>
+<script src="../../js/serviceProvisionOldContent.js"></script>

@@ -1,0 +1,39 @@
+<style>
+    
+</style>
+
+<div class="box">
+    <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">รายงานรายบุคคล</div>
+    <div class="box-body">
+        <table class="table">
+          <tbody id="report-table">
+            <tr>
+              <td>ข้อตกลงแผนการดูแล (Care Agreement)
+                <a onclick="report_loadCareAgreement()" class="btn btn-primary pull-right" style="padding-top:0; padding-bottom:0;">สร้างรายงาน</a>
+              </td>
+            </tr>
+            <tr>
+              <td>รายงานการดูแลผู้สูงอายุระยะยาว (ILP) <i>(อยู่ในระหว่างการปรับปรุง)</i>
+                <a href="/img/ILP.pdf" target="_blank" class="btn btn-primary pull-right" style="padding-top:0; padding-bottom:0;">สร้างรายงาน</a>
+              </td>
+            </tr>
+          </tbody>    
+        </table>  
+    </div>
+</div>
+
+<script>
+  function report_loadCareAgreement() {
+    startAjaxLoader();
+    sessionStorage.setItem('PDF_TYPE', 'CARE_AGREEMENT');
+    getReportData('CARE_AGREEMENT');
+    //loadContentPage('#content', contentPath + "pdfReport.html");
+    //$('#content').attr('style','height: 450px;');
+    stopAjaxLoader();
+  }
+  
+  function report_loadILP() {
+    //alert('ILP');
+    
+  }
+</script>

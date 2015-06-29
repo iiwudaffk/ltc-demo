@@ -1,1 +1,1 @@
-# ltc-demo
+# nu-ltc

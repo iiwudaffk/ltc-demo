@@ -1,0 +1,48 @@
+<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+
+<script src="../../js/plugins/handsontable/handsontable.full.js"></script>
+<link href="../../js/plugins/handsontable/handsontable.full.css" rel="stylesheet" />
+<script src="../../js/plugins/handsontable/moment.js"></script>
+<script src="../../js/plugins/handsontable/pikaday/pikaday.js"></script>
+<link href="../../js/plugins/handsontable/pikaday/css/pikaday.css" rel="stylesheet" />
+<script src="../../js/bulkHealthAssessment.js"></script>
+<div class="col-md-12 col-xs-12" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;"> ผู้สูงอายุทั้งหมดตามช่วงอายุ          
+        </div>
+        <div class="box-body">
+            <div class="row">                
+                <div class="col-md-4 col-xs-12">
+                    <select id="villageList" class="form-control" style="margin-bottom: 5px;">                        
+                    </select>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <select class="form-control year">
+                        <option value="2558">ปี 2558</option>
+                        <option value="2557">ปี 2557</option>
+                    </select> 
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class='input-group'>
+                        <input id="recdate-input" type='text' class="form-control" placeholder="วันที่ดำเนินการ" />
+                        <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                
+            </div> 
+            <div class="row">
+                <div class="col-md-12" style="height:500px;">
+                    <div id="dataTable" style="width:100%; height:100%; overflow:hidden; text-align:center;"></div>
+                </div>
+            </div>
+            <div id="panel-button" class='center-block' style="width: 150px; padding-bottom: 8px;">                
+                <a onclick="saveBulkHealthAssessment()" class="btn btn-primary" style="width: 150px;">บันทึก</a>                
+            </div>
+                
+        </div>
+    </div>
+</div>

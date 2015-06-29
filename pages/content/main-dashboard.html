@@ -1,0 +1,37 @@
+<script src='../../js/main-dashboard.js'></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+    
+    
+</script>
+<div class="col-lg-3 col-xs-12" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">filter
+        </div>
+        <div class="box-body" >         
+           <div class="form-group">
+                <label >เลือกพื้นที่ จังหวัด อำเภอ ตำบล</label>
+                <select id="province" class="form-control" style="margin-bottom: 5px;">
+                    <option value="99999">--เลือกจังหวัด--</option>
+                </select>
+                <select id="city" class="form-control" style="margin-bottom: 5px;">
+                    <option value="99999">--เลือกอำเภอ--</option>
+                </select>
+                <select id="tumbon" class="form-control" style="margin-bottom: 5px;">
+                    <option value="99999">--เลือกตำบล--</option>
+                </select>
+                <a onclick="" class="btn btn-primary">ตกลง</a>
+            </div>      
+        </div>
+    </div>
+</div>
+<div class="col-lg-9 col-xs-12" style="padding-left:0px; margin-bottom:8px;">
+    <div class="box">   
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">Visualizer
+            <a onclick="reverseEventHandler()" style="cursor:pointer"><div class="pull-right">กลับ</div></a>
+        </div>
+        <div class="box-body">         
+            <div id="barchart_material" style="width: 95%; height: 500px;"></div>
+        </div>
+    </div>
+</div>

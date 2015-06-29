@@ -1,0 +1,65 @@
+﻿<style>
+    .timeline-footer {
+        margin-top: -30px;
+    }
+
+    .timeline-body {
+        min-height: 30px;
+    }
+
+    .overlay {
+        position: absolute;
+        font-size: larger;
+        top: 45%;
+        left: 0;
+        z-index: 1100;
+        text-align: center;
+        width: 100%;
+    }
+
+    .saving-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 120px;
+        z-index: 1020;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+    }
+
+    .load-more {
+        text-align: center;
+        font-size: smaller;
+    }
+
+        .load-more .saving-img {
+            margin-top: -50px;
+        }
+
+    .loading-item-body {
+        height: 30px;
+        display: none;
+    }
+</style>
+
+<div class="box">
+    <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">person-timeline </div>
+    <div class="box-body">
+        <ul class="timeline">
+            <li>
+                <div class="timeline-item" style="text-align: center; background-color:grey">
+                    <div class="timeline-body">
+                        <a onclick="redirectToScreening();" class="btn btn-primary">ทำแบบประเมินใหม่</a>
+                    </div>
+                </div>
+            </li>
+            <li id="end-item">
+                <i class="fa fa-clock-o"></i>
+            </li>
+        </ul>                
+    </div>
+</div>
+
+<script src="../../js/screeningOldContent.js"></script>

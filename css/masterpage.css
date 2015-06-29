@@ -1,0 +1,88 @@
+﻿#modalDetails .modal-dialog {
+            padding-right: 1em;
+            width: 60%;
+        }
+
+        .modal-person-container {
+            text-align: center;
+        }
+
+            .modal-person-container .modal-person-text {
+                text-align: center;
+            }
+
+        .text-q {
+            font-size: medium;
+            font-weight: bold;
+        }
+
+        .text-a {
+            padding-left: 1em;
+            padding-right: 2em;
+            font-size: medium;
+        }
+
+        #table-home tr{
+            text-align:center;
+        }
+
+        .modal-person-img {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            height: 200px;
+        }
+
+        .modal-home-img {
+            height: 150px;
+        }
+
+        .box > .loading-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .box > .loading-img {
+            z-index: 1020;
+            background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+        }
+        .small-box .img {
+            position: absolute;
+            top: auto;
+            bottom: 20px;            
+            right: 5px;
+            z-index: 0;
+            font-size: 90px;
+            color: rgba(0, 0, 0, 0.15);
+        }
+
+            .small-box .img img {
+                width: 100px;
+                height: 100px;
+                inset: 0 0 2em 2em khaki;
+            }
+
+        .cid-box {
+            margin-top: -10px;
+        }
+
+        .inner p {
+            margin-top: -15px;
+        }
+
+        .year-box {
+            font-size: large;
+            padding-left: 5px;
+        }
+
+        @media screen and (max-width: 480px) {
+            .small-box .img {
+                display: none;
+            }
+
+            #modalDetails .modal-dialog {
+                width: 98%;
+            }
+        }

@@ -1,0 +1,66 @@
+<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+<script src="../../js/planningContent.js"></script>
+<style>
+    .box > .saving-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box > .saving-img {
+        z-index: 1020;
+        background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+    }
+</style>
+
+<div class="col-md-12">
+    <!-- right column -->
+    
+            <div class='center-block' style="width: 250px; margin-top: 10px;">
+                <div class='input-group'>
+                    <input id="recdate-input" type='text' class="form-control" placeholder="วันที่ดำเนินการ" />
+                    <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+          
+           <div class="col-md-12" style="margin-top : 8px;">
+              <!-- Custom Tabs -->
+              <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs" id="tabs-list">
+                                        
+                </ul>
+                <div class="tab-content" id="tabs-content" style="background-color:#F0F3F7">
+                    
+                  <!-- /.tab-pane -->                  
+                </div><!-- /.tab-content -->
+              </div><!-- nav-tabs-custom -->
+               <!--
+               <div class="tree">
+                    <ul>
+                        <li>
+                           <span> <input type="checkbox"><span>Parent</span></span>
+                            <ul>
+                                <li>
+                                    <span> Child</span> 
+                                </li>
+                                <li>
+                                    <span> Child</span>
+                                </li>  
+                            </ul>
+                        </li>                    
+                    </ul>
+                </div>
+               -->
+            </div>
+            <div id="panel-button" class="center-block" style="width: 150px; padding-bottom: 20px;"><a id="button-assessment-save" onclick="savePlanningResult()" class="btn btn-primary" style="width: 150px; margin-top: 10px;">บันทึก</a></div>
+            <!-- /.box-body -->
+        </div>
+        <!-- 
+    <!--/.col (right) -->
+

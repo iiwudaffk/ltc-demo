@@ -1,0 +1,29 @@
+<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+<script src="../../js/formTemplate.js"></script>
+<!DOCTYPE html>
+
+<div class="col-md-12">
+    <!-- right column -->
+    
+        <div class='center-block' style="width: 250px; margin-top: 10px;">
+            <div class='input-group'>
+                <input id="recdate-input" type='text' class="form-control" placeholder="วันที่ดำเนินการ" />
+                <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+        <div class='box' style='margin-top: 8px'>
+            <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;"></div>
+            <div class="box-body">
+                <div id="questionPanel">
+                    
+                </div>
+                <div id="panel-button" class='center-block' style="width: 150px; padding-bottom: 20px;">               
+                    <a id="button-health-save" onclick="saveHealthAssessmentResult()" class="btn btn-primary" style="width: 150px;">บันทึก</a>                    
+                </div>
+            </div>
+        </div>
+</div>

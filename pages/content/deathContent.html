@@ -1,0 +1,67 @@
+<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<link href="../../css/select2.min.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+<script src="../../js/select2.full.js"></script>
+<script src="../../js/deathContent.js"></script>
+<style>
+  
+</style>
+<div class="box" id="main-cod">
+        <div class="box-header" style="border-bottom: 1px solid #f4f4f4; padding: 10px;">แจ้งตาย</div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div>
+                          <label id="label-cid">เลขประจำตัวประชาชน :</label>                          
+                    </div>                      
+                </div>
+                <div class="col-md-6">
+                    <div>
+                          <label id="label-name">ชื่อ-นามสกุล :</label>                          
+                    </div>                     
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>วันที่เสียชีวิต</label>
+                        <div class="input-group">
+                            <input id="death-date-input" type="text" class="form-control" placeholder="วันที่เสียชีวิต">
+                            <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>                      
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>สาเหตุการเสียชีวิต</label>
+                        <select id="cod" type="text" class="form-control"></select>
+                    </div>                       
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>สถานที่เสียชีวิต</label>
+                        <select id="place-of-death" type="text" class="form-control"></select>
+                    </div>                      
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>แหล่งข้อมูล</label>
+                        <select id="data-source" type="text" class="form-control"></select>
+                    </div>                       
+                </div> 
+            </div> 
+        </div>
+</div>
+<a id="add-icd-code" style="cursor:pointer;" onclick="addICD_cod()"><div style=" margin-top: 5px;">เพิ่มสาเหตุการตาย(ICD10)</div></a>
+<div class='center-block' style="width: 250px; padding-top: 20px;">
+    <div class='input-group'>
+        <a id="button-assessment-save" onclick="saveDeathResult()" class="btn btn-primary" style="width: 150px;">บันทึก</a>
+    </div>
+</div>
+
+

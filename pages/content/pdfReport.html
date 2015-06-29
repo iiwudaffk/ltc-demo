@@ -1,0 +1,62 @@
+
+ 	<meta charset='utf-8'> 	
+	<!-- <script src="https://maps.googleapis.com/maps/api/js"></script> -->
+	<script src="../../js/html2canvas.js"></script>
+ 	<script src='../../js/base64.js'></script>
+ 	<script src='../../js/pdfmake.min.js'></script>
+ 	<script src='../../js/vfs_fonts.js'></script>
+ 	<script src='../../js/pdf-interface.js'></script>
+    <script src='../../js/pdf-extended.js'></script>
+
+    <style>
+        html, body {
+    		height: 100%;
+    		margin: 0;
+    	}
+    </style>
+ 	<script>	
+	// var base64_map;
+    
+    var base64_graph;
+        
+	function initialize() {
+		var mapCanvas = document.getElementById('map-canvas');
+		var mapOptions = {
+		  center: new google.maps.LatLng(16.7464739,100.1567704),
+		  zoom: 8,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(mapCanvas, mapOptions);	
+		google.maps.event.addListenerOnce(map, 'idle', function(){
+			setTimeout( function(){
+			    convertasbinaryimage();
+			}, 2000);
+		});		
+	}
+	
+	function convertasbinaryimage(id) { 
+		html2canvas(document.getElementById(id), {
+		useCORS: true,
+		onrendered: function(canvas) {
+			$('#map-canvas').remove();
+			 base64_graph = canvas.toDataURL("image/png"); 	
+			 //console.log(base64_map);			 
+			 createPDF();
+			 return false;                    
+			}
+		});
+    }
+	
+ 	$(document).ready( function () {	
+		// initialize();
+        // getCareAgreementData();
+       
+        getReportData(sessionStorage.getItem('PDF_TYPE'));        
+        
+ 	});
+ 	</script>
+ <body>
+	<!-- <div id="map-canvas" style="width:350px; height: 350px; background-color: #CCC;"></div>	-->
+ 	<iframe frameBorder="0" width="100%" height="100%" style="margin:0px;"></iframe>
+    <canvas id="assessment-canvas" style="height: 400px: width:400px;"></canvas>
+ </body>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8" />
+	<title>Nu Senoir LTC</title>
+	<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport' />
+	<link href="../css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/font-awesome.min.css" rel="stylesheet" />
+	<link href="../css/AdminLTE.css" rel="stylesheet" />
+	<link href="../css/masterpage.css" rel="stylesheet" />
+	<link href="../css/progress-wizard.min.css" rel="stylesheet">
+	<link href="../css/extend.css" rel="stylesheet" />
+
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/masterpage.js"></script>
+	<script src="../js/jsCore.js"></script>
+	<script src="../js/flow_controller.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/AdminLTE/app.js"></script>
+	<script src="../js/config.js"></script>
+	<script src="../js/search.js"></script>
+	<script src="../js/dashboard.js"></script>
+
+	<script src="../js/Chart.js"></script>     
+	<script src="../js/jsCoreAPP.js"></script>
+	<script src="../js/bootbox.min.js"></script>
+
+	
+</head>
+<body class="skin-blue">
+	<header class="header">
+		<a href="#" class="logo">Nu Senior LTC</a>
+		<!-- Header Navbar: style can be found in header.less -->
+		<nav class="navbar navbar-static-top" role="navigation">
+			<!-- Sidebar toggle button-->
+			
+				<a href="#" class="navigation-btn" data-toggle="offcanvas" role="button" style="color:white; width: 30px; height: 100%; padding-top: 12px; margin: 0;" >
+					<i class="fa fa-bars" style="font-size:20px;"></i>
+				</a>
+			
+			<div class="navbar-right">
+				<ul class="nav navbar-nav">
+					<!-- Messages: style can be found in dropdown.less-->
+					<li class="dropdown user user-menu">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="glyphicon glyphicon-user"></i>
+							<asp:Label ID="StaffUser" runat="server" Text="Username"></asp:Label>
+							<span><i class="caret"></i></span>
+						</a>
+						<ul class="dropdown-menu">
+							<!-- User image -->
+							<li class="user-header bg-red">
+								<img src="../img/avatar-placeholder.png" class="img-circle" alt="User Image" onerror="this.src='../img/avatar-placeholder.png'" />
+								<p style="text-align: left">
+									ชื่อ: 
+									<div id="staffNameLabel"></div>	
+									<br />
+									หน่วยงาน:
+									<div id="departmentLabel"></div>
+									<br />
+									ตำแหน่ง:
+
+										<select id="DDLselectrole" name="selectrole" runat="server" class="k-dropdown k-textbox" style="width: auto; color: #000000;"></select>
+								</p>
+							</li>
+
+							<!-- Menu Footer-->
+							<li class="user-footer">
+								<div class="pull-left">
+									<a href="Account/Profile.aspx" class="btn btn-default btn-flat">Profile</a>
+								</div>
+								<div class="pull-right">
+									<input id="LogInBtn" type="button" value="Login" class="btn btn-default btn-flat" />
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="left-side sidebar-offcanvas">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img src="../img/avatar-placeholder.png" class="img-circle" alt="User Image" onerror=" this.src='../img/avatar-placeholder.png'" />
+					</div>
+					<div class="pull-left info">
+						<p>ยินดีต้อนรับ</p>
+						<a href="#"><i class="fa fa-circle text-success"></i>Online</a>
+					</div>
+				</div>
+				<!-- search form -->
+				<form class="sidebar-form">
+					<div class="input-group">
+						<input type="text" class="form-control" title="ค้นหาด้วยชื่อ หรือเลขบัตรประชาชน" placeholder="ค้นหาด้วยชื่อหรือบัตร..." id="search_input"/>
+						<span class="input-group-btn">
+							<a href="#" class="btn btn-default" id="search_button"><i class="fa fa-search active"></i></a>
+						</span>
+					</div>
+				</form>
+				<!-- /.search form -->
+
+				<ul class="sidebar-menu">
+				</ul>
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+
+		<!-- Right side column. Contains the navbar and content of the page -->
+		<aside class="right-side">
+			
+
+			<!-- Main content -->
+			<section class="content none" id="progress-box" >				
+					<div class="box">	        			
+				        <div class="box-body">
+				        	<ul class="progress-indicator" style="font-size:inherit; margin-bottom: 0px !important;">
+								  <li><span class="bubble"></span></li>
+								  <li><span class="bubble"></span></li>
+								  <li><span class="bubble"></span></li>
+								  <li><span class="bubble"></span></li>
+								  <li><span class="bubble"></span></li>
+							</ul>			            
+				        </div>
+       			 	</div>				
+			</section>
+
+			<section class="content" id="content"></section>
+			
+			<!-- /.content -->
+		</aside>
+		<!-- /.right-side -->
+	</div>
+	<!-- ./wrapper -->
+<div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="myModalLabel">ข้อมูลโดยรวม</h4>
+						</div>
+						<div class="modal-body">
+							<div>
+								<ul class="nav nav-tabs">
+									<li class="nav active"><a href="#tab-person" data-toggle="tab">ข้อมูลบุคคล</a></li>
+									<li class="nav"><a href="#tab-family" data-toggle="tab">ครอบครัว</a></li>
+									<li class="nav"><a href="#tab-home" data-toggle="tab">สภาพบ้าน </a></li>
+								</ul>
+
+								<!-- Tab panes -->
+								<div class="tab-content">
+									<div class="tab-pane fade in active" id="tab-person">
+										<div class="modal-person-container">
+											<img class="modal-person-img" src="../../img/UnPicUser.png" />
+										</div>
+										<div class="modal-person-text">
+											<p>
+												<span class="text-q">ชื่อ-นามสกุล </span><span class="text-a" id="modal-name">-</span>
+												<span class="text-q">อายุ </span><span class="text-a" id="modal-age">78</span>
+											</p>
+											<p>
+												<span class="text-q">ที่อยู่ </span><span class="text-a" id="modal-address">-</span>
+											</p>
+											<p>
+												<span class="text-q">เบอร์โทรศัพท์ </span><span class="text-a" id="modal-phone">-</span>
+											</p>
+											<p>
+												<span class="text-q">ชื่อ-นามสกุลผู้ดูแล </span><span class="text-a" id="modal-fname">-</span>
+											</p>
+											<p>
+												<span class="text-q">เบอร์โทรศัพท์ผู้ดูแล </span><span class="text-a" id="modal-fphone">-</span>
+											</p>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="tab-family">
+										<div class="box">
+											<div class="box-body">
+												<table id="table-family" class="table table-bordered">
+													<tr>
+														<th style="width: 10px">ลำดับ</th>
+														<th>ชื่อ-นามสกุล</th>
+														<th style="width: 40px">อายุ</th>
+														<th>ความสัมพันธ์</th>
+													</tr>
+													<tr>
+														<td>-</td>
+														<td>-</td>
+														<td>-</td>
+														<td>-</td>
+													</tr>
+												</table>
+											</div>
+											<!-- /.box-body -->
+										</div>
+										<!-- /.box -->
+									</div>
+									<div class="tab-pane fade" id="tab-home" style="height: 450px">
+										<div class="box">
+											<div class="box-body" style="height: 200px; overflow-y: scroll">
+												<table id="table-home" class="table table-bordered" style="height: 200px">
+													<tr>
+														<th style="text-align: center;">ก่อนปรับสภาพบ้าน</th>
+														<th style="text-align: center;">หลังปรับสภาพบ้าน</th>
+													</tr>
+													<tr>
+														<td>
+															<img id="img-home-current-in01" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+														<td>
+															<img id="img-home-old-in01" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+													</tr>
+													<tr>
+														<td>
+															<img id="img-home-current-in02" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+														<td>
+															<img id="img-home-old-in02" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+													</tr>
+													<tr>
+															<img id="img-home-current-out01" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+														<td>
+															<img id="img-home-old-out01" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+													</tr>
+													<tr>
+														<td>
+															<img id="img-home-current-out02" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+														<td>
+															<img id="img-home-old-out02" class="modal-home-img" src="../../img/UnPicUser.png" onerror="imgError(this);" /></td>
+													</tr>
+												</table>
+											</div>
+
+											<div class="box-body" style="height: 250px; overflow-y: scroll">
+												<h3>ข้อมูลการปรับสภาพบ้าน</h3>
+												<table id="table-question" class="table table-bordered">
+													<tr>
+														<th>คำถาม</th>
+														<th style="width: 150px">ก่อนปรับสภาพบ้าน</th>
+														<th style="width: 150px">หลังปรับสภาพบ้าน</th>
+													</tr>
+													<tr>
+														<td>-</td>
+														<td>-</td>
+														<td>-</td>
+													</tr>
+												</table>
+											</div>
+											<!-- /.box-body -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">ปิด</button>
+								<button onclick="selectedPerson();" type="button" class="btn btn-primary">รับบริการ</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.box -->
+		</div>
+</body>
+</html>

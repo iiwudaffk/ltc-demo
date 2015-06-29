@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/plugins/handsontable/jquery.min.js"></script>
+    <script src="../js/plugins/handsontable/handsontable.full.js"></script>
+    <link href="../js/plugins/handsontable/handsontable.full.css" rel="stylesheet" />
+    <script src="../js/screeningforCM.js"></script>
+    <script src="../js/plugins/handsontable/moment.js"></script>
+    <script src="../js/plugins/handsontable/pikaday/pikaday.js"></script>
+    <link href="../js/plugins/handsontable/pikaday/css/pikaday.css" rel="stylesheet" />
+</head>
+<body style="text-align:center">
+    แบบบันทึกการคัดกรองเพื่อจำแนกผู้สูงอายุตามศักยภาพ
+    <table>
+        <tr style="height:500px;vertical-align:top">
+            <td><div id="dataTable" style="height:250px;text-align:center">
+        
+        <script>
+            getdata();
+            </script>
+       
+                    </div></td>
+        </tr>
+        <tr>
+            <td>
+                 <input id="Button_save" type="submit" value="บันทึก" onclick="savedata();"/>
+            </td>
+        </tr>
+    </table>
+    
+
+</body>
+</html>

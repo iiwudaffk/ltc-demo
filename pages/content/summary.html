@@ -1,0 +1,39 @@
+<link href="../../css/summary.css" rel="stylesheet" />
+<script src="../../js/summary.js"></script>
+<div class='col-lg-12'>
+    <div style="padding-top: 10px; margin-bottom: -20px;">
+        <div class="row">
+            <select class="form-control" id="assessment-qtid" style="width:250px; display: inline;">
+                <option value="99999">ทุกด้าน</option>
+                <option value="00001">การประเมิณด้านสังคม</option>
+                <option value="00002">การประเมินความสามารถในการทำกิจวัตรประจำวัน</option>
+                <option value="00003">การประเมินสภาพสมอง</option>
+                <option value="00004">การประเมินภาวะกลืนลำบาก</option>
+                <option value="00005">การประเมินภาวะซึมเศร้าในช่วง 2 สัปดาห์ที่ผ่านมารวมทั้งวันนี้</option>
+            </select>
+
+            <select class="form-control" id="result-type" style="width:370px; display: inline;">
+                <option value="99999">ทุกกลุ่ม</option>
+                <option value="00001">กลุ่มที่ 1 ผู้สูงอายุที่ช่วยเหลือตัวเองได้ (ติดสังคม)</option>
+                <option value="00002">กลุ่มที่ 2 ผู้สูงอายุที่ช่วยเหลือตัวเองได้บ้าง (ติดบ้าน)</option>
+                <option value="00003">กลุ่มที่ 3 ผู้สูงอายุที่ช่วยเหลือตัวเองไม่ได้ (ติดเตียง)</option>
+            </select>
+
+            <a id="submit-button" style="width:100px; vertical-align:top;" onclick="summary_filter();" class="btn btn-primary">ค้นหา</a>
+            <a class="pull-right" onclick='pdfPrint();' style='cursor: pointer' ><i class='fa fa-file-pdf-o'></i> พิมพ์รายชื่อ</a>
+        </div>
+        <div id="expand-header" style="padding-bottom: 5px;">
+            <h2></h2>
+        </div>
+    </div>
+    <div id="integration-list">
+        <ul>
+        </ul>
+    </div>
+    <div class="box-footer">
+        <div class="center-block" style="width: 250px;">
+            <a id="expand_prev_button" style="width:100px;" onclick="expand_prev_click();" class="btn btn-primary">< ย้อนกลับ</a>
+            <a id="expand_next_button" style="width:100px;" onclick="expand_next_click();" class="btn btn-primary">ถัดไป > </a>
+        </div>
+    </div>
+</div>

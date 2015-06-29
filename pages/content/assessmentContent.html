@@ -1,0 +1,72 @@
+﻿<link href="../../css/datepicker/datepicker.css" rel="stylesheet" />
+<script src="../../js/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="../../js/plugins/datepicker/bootstrap-datepicker-thai.js"></script>
+<script src="../../js/plugins/datepicker/locales/bootstrap-datepicker.th.js"></script>
+<script src="../../js/assessmentContent.js"></script>
+<style>
+    .box > .saving-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .box > .saving-img {
+        z-index: 1020;
+        background: transparent url('../../img/ajax-loader.gif') 50% 50% no-repeat;
+    }
+</style>
+
+<div class="row">
+    <!-- right column -->
+    <div class="col-md-12">
+        <!-- general form elements disabled -->
+        <div class="box box-warning">
+            <div class='center-block' style="width: 250px; padding-top: 20px;">
+                <div class='input-group'>
+                    <input id="recdate-input" type='text' class="form-control" placeholder="วันที่ดำเนินการ" />
+                    <span class="input-group-addon" onclick="$('#recdate-input').datepicker('show');"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="box-header">
+                <h3 class="box-title"></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div id="questionPanel">
+                    <!--<%--append by code--%>-->
+                </div>
+            </div>
+
+            <!-- result -->
+            <div class="box-body no-padding" style="display: none">
+                <table class="table table-condensed">
+                    <tr>
+                        <th style="width: 10px">ข้อ</th>
+                        <th>ด้าน</th>
+                        <th style="width: 40%">ระดับการช่วยเหลือตนเอง</th>
+                        <th style="width: 50px">ระดับ</th>
+                    </tr>
+                </table>
+            </div>
+            <!-- /result -->
+
+            <div id="panel-button" class='center-block' style="width: 350px; padding-bottom: 20px;">
+                <a id="button-assessment-prev" href="#" onclick="button_assessment_prev_click();" class="btn btn-default" style="width: 150px; display: none;"><span class="glyphicon glyphicon-arrow-left"></span>ย้อนกลับ</a>
+                <a id="button-assessment-next" href="#" onclick="button_assessment_next_click();" class="btn btn-default" style="width: 150px; display: none;">ถัดไป  <span class="glyphicon glyphicon-arrow-right"></span></a>
+                <a id="button-assessment-save" href="#" onclick="saveAssessmentResult();" class="btn btn-primary" style="width: 150px; display: none;">บันทึก</a>
+                <a id="button-assessment-home" href="Search.aspx" class="btn btn-default" style="width: 150px; display: none;">กลับสู่หน้าหลัก</a>
+            </div>
+
+            <div class="overlay" style="text-align: center; padding-top: 70px; font-size: medium; display: none"></div>
+            <div class="saving-img" style="display: none"></div>
+
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+    <!--/.col (right) -->
+</div>
